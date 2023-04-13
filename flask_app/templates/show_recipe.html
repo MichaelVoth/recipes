@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,51 +8,70 @@
     <title>Add Recipe</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-    <body>
-        <div id="wrapper">
-            <div id="container">
-                <div id="header"></div>
-                <div id="content">
-                    <div class="lg_col">
-
-                        <div style="display: flex; justify-content: space-between;">
-                                <h1>{{recipe.name}}</h1>
-                                <div>
-                                <a href="/dashboard">Back to Recipes</a>
-                                <a href="/logout">Logout</a>
-                                </div>
-                        </div>
+    <div id="wrapper">
+        <div id="container">
+            <div id="header"></div>
+            <div id="content">
+                <div class="xlg_col">
+                    <div class="nav">
+                        <h1>Welcome {{session['user_name']}}!</h1>
                         <div>
-                            <p>Name:</p>
-                            <br>
-                            <p>{{recipe.name}}</p>
-                            <br>
-                            <p>Description:</p>
-                            <br>
-                            <p>{{recipe.description}}</p>
-                            <br>
-                            <p>Under 30 Minutes:</p>
-                            {% if recipe.under_30 == 1 %} 
-                            <p>Yes</p>
-                            {% else %}
-                            <p>No</p>
-                            {%endif%}
-                            <br>
-                            <p>Instructions:</p>
-                            <br>
-                            <p>{{recipe.instructions}}</p>
-                            <p>Date made:</p>
-                            <p>{{recipe.date_cooked}}</p>
+                            <a href="/dashboard">Back to Recipes</a>
+                            <a href="/logout">Logout</a>
                         </div>
-
                     </div>
-                </div>
-                <div id="footer">
-
+                    <div class="nav">
+                        <h2>{{recipe.name}}</h2>
+                        <p>Posted By {{recipe.posted_by}}</p>
+                    </div>
+                    <fieldset>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h3>Name:</h3>
+                                </td>
+                                <td>{{recipe.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Description:</h3>
+                                </td>
+                                <td>{{recipe.description}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Under 30 Minutes:</h3>
+                                </td>
+                                <td>
+                                    {% if recipe.under_30 == 1 %}
+                                    <p>Yes</p>
+                                    {% else %}
+                                    <p>No</p>
+                                    {%endif%}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Instructions:</h3>
+                                </td>
+                                <td>{{recipe.instructions}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Date made:</h3>
+                                </td>
+                                <td>{{recipe.date_cooked.strftime('%m-%d-%y') }}</td>
+                            </tr>
+                        </table>
+                    </fieldset>
                 </div>
             </div>
+            <div id="footer">
+            </div>
         </div>
-    </body>
-    
-    </html>
+    </div>
+</body>
+
+</html>

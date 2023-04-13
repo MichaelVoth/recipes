@@ -45,7 +45,7 @@
                             {% with messages = get_flashed_messages(category_filter=["register"]) %}
                             {% if messages %}
                             {% for message in messages %}
-                            <p class="error" style="color: red;">{{message}}</p>
+                            <p class="error">{{message}}</p>
                             {% endfor %}
                             {% endif %}
                             {% endwith %}
@@ -71,7 +71,7 @@
                             {% with messages = get_flashed_messages(category_filter=["login"]) %}
                             {% if messages %}
                             {% for message in messages %}
-                            <p class="error" style="color: red;">{{message}}</p>
+                            <p class="error">{{message}}</p>
                             {% endfor %}
                             {% endif %}
                             {% endwith %}
