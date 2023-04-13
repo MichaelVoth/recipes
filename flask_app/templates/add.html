@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <body>
+        <div id="wrapper">
+            <div id="container">
+                <div id="header"></div>
+                <div id="content">
+                    <div class="ld_col">
+
+                        <div style="display: flex; justify-content: space-between;">
+                                <h1>Add a Recipe</h1>
+                                <div>
+                                <a href="/recipes">Back to Recipes</a>
+                                <a href="/logout">Logout</a>
+                                </div>
+                            
+                        </div>
+                        <form action="/add/recipe" method="POST">
+                            <fieldset class="form">
+                                <legend>Add a new recipe</legend>
+                                <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                                <div class="table_row">
+                                <label for="recipe_name">Name:</label>
+                                <input type="text" name="name" id="recipe_name" required>
+                                </div>
+                                <div class="table_row">
+                                <label for="description">Description:</label>
+                                <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                                </div>
+                                <div class="table_row">
+                                <label for="instructions">Instructions:</label>
+                                <textarea name="instructions" id="instructions" cols="30" rows="10" required></textarea>
+                                </div>
+                                <div class="table_row">
+                                <label for="date_cooked">Date cooked:</label>
+                                <input type="date" name="date_cooked" id="date_cooked">
+                                <label for="under_30">Under 30 minutes:</label>
+                                <label for="under_30_yes">Yes</label>
+                                <input type="radio" name="under_30" id="under_30_yes" value="1">
+                                <label for="under_30_no">No</label>
+                                <input type="radio" name="under_30" id="under_30_no" value="0">
+                                </div>
+                                <input type="submit" value="Add">
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <body>
+        <div id="wrapper">
+            <div id="container">
+                <div id="header"></div>
+                <div id="content">
+                    <div class="lg_col">
+
+                        <div style="display: flex; justify-content: space-between;">
+                                <h1>{{recipe.name}}</h1>
+                                <div>
+                                <a href="/dashboard">Back to Recipes</a>
+                                <a href="/logout">Logout</a>
+                                </div>
+                        </div>
+                        <div>
+                            <p>Name:</p>
+                            <br>
+                            <p>{{recipe.name}}</p>
+                            <br>
+                            <p>Description:</p>
+                            <br>
+                            <p>{{recipe.description}}</p>
+                            <br>
+                            <p>Under 30 Minutes:</p>
+                            {% if recipe.under_30 == 1 %} 
+                            <p>Yes</p>
+                            {% else %}
+                            <p>No</p>
+                            {%endif%}
+                            <br>
+                            <p>Instructions:</p>
+                            <br>
+                            <p>{{recipe.instructions}}</p>
+                            <p>Date made:</p>
+                            <p>{{recipe.date_cooked}}</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="footer">
+
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    </html>
