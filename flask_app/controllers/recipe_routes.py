@@ -15,6 +15,14 @@ def create_recipe():
 
 @app.route('/add/recipe', methods=['POST'])
 def add_recipe():
+    if session.get('user_id') is None:
+        return redirect('/')
+    
+    session['name'] = request.form['name']
+    session['description'] = request.form['description']
+    session['instructions'] = request.form['instructions']
+    session['under_30'] = request.form['under_30']
+    session['date_cooked'] = request.form['date_cooked']
     # Handles validation of creation.
     if not Recipe.validate_recipe(request.form):
         return redirect('/create')
@@ -46,6 +54,8 @@ def edit_recipe(id):
 
 @app.route('/update', methods=['POST'])
 def update_recipe():
+    if session.get('user_id') is None:
+        return redirect('/')
     if not Recipe.validate_recipe(request.form):
         return redirect(f'/edit/{request.form["id"]}')
     Recipe.update_recipe_info({
@@ -61,5 +71,8 @@ def update_recipe():
 
 @app.route('/delete/<int:id>')
 def delete_recipe(id):
+    if session.get('user_id') is None:
+        return redirect('/')
+
     Recipe.delete_recipe(id)
     return redirect('/dashboard')
